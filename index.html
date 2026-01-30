@@ -308,11 +308,11 @@
                 <span class="logo-text">RUN</span>
             </div>
             <ul>
-                <li><a href="#home" onclick="showSection('home')">Inicio</a></li>
-                <li><a href="#features" onclick="showSection('home'); scrollToFeatures()">Características</a></li>
-                <li><a href="#privacy" onclick="showSection('privacy')">Privacidad</a></li>
-                <li><a href="#terms" onclick="showSection('terms')">Términos</a></li>
-                <li><a href="#contact" onclick="showSection('contact')">Contacto</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('home')">Inicio</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('home'); scrollToFeatures()">Características</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('privacy')">Privacidad</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('terms')">Términos</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('contact')">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -324,7 +324,7 @@
                 <img src="logo.png" alt="RUN Logo" style="height: 120px; margin-bottom: 1rem;">
                 <h1>Viaja donde quieras</h1>
                 <p>Siempre a tiempo, siempre seguro</p>
-                <a href="#features" onclick="event.preventDefault(); showSection('home'); scrollToFeatures()" class="btn">Conocer más</a>
+                <a href="javascript:void(0);" onclick="scrollToFeatures()" class="btn">Conocer más</a>
             </div>
         </section>
 
@@ -674,10 +674,10 @@
                 <div class="footer-section">
                     <h3>Enlaces</h3>
                     <ul>
-                        <li><a href="#home" onclick="showSection('home')">Inicio</a></li>
-                        <li><a href="#privacy" onclick="showSection('privacy')">Política de Privacidad</a></li>
-                        <li><a href="#terms" onclick="showSection('terms')">Términos y Condiciones</a></li>
-                        <li><a href="#contact" onclick="showSection('contact')">Contacto</a></li>
+                        <li><a href="javascript:void(0);" onclick="showSection('home')">Inicio</a></li>
+                        <li><a href="javascript:void(0);" onclick="showSection('privacy')">Política de Privacidad</a></li>
+                        <li><a href="javascript:void(0);" onclick="showSection('terms')">Términos y Condiciones</a></li>
+                        <li><a href="javascript:void(0);" onclick="showSection('contact')">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -690,9 +690,9 @@
                 <div class="footer-section">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="#privacy" onclick="showSection('privacy')">Privacidad de datos</a></li>
-                        <li><a href="#terms" onclick="showSection('terms')">Términos de servicio</a></li>
-                        <li><a href="#contact" onclick="showSection('contact')">Eliminar cuenta</a></li>
+                        <li><a href="javascript:void(0);" onclick="showSection('privacy')">Privacidad de datos</a></li>
+                        <li><a href="javascript:void(0);" onclick="showSection('terms')">Términos de servicio</a></li>
+                        <li><a href="javascript:void(0);" onclick="showSection('contact')">Eliminar cuenta</a></li>
                     </ul>
                 </div>
             </div>
@@ -713,32 +713,31 @@
             document.getElementById(sectionId).classList.add('active');
             
             // Scroll to top
-            window.scrollTo(0, 0);
-            
-            // Update URL hash without triggering scroll
-            history.pushState(null, null, '#' + sectionId);
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
 
         function scrollToFeatures() {
-            // Wait for section to be visible
+            // Asegurar que estamos en home
+            showSection('home');
+            
+            // Esperar a que se muestre la sección
             setTimeout(() => {
                 const featuresSection = document.getElementById('features');
                 if (featuresSection) {
-                    featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    featuresSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
                 }
-            }, 100);
+            }, 300);
         }
 
-        // Handle browser back/forward buttons
-        window.addEventListener('popstate', function() {
-            const hash = window.location.hash.substring(1) || 'home';
-            showSection(hash);
-        });
-
-        // Handle initial page load with hash
+        // Cargar home al inicio
         window.addEventListener('load', function() {
-            const hash = window.location.hash.substring(1) || 'home';
-            showSection(hash);
+            showSection('home');
         });
     </script>
 </body>
