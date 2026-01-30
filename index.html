@@ -44,6 +44,17 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
             font-size: 1.8rem;
             font-weight: bold;
         }
@@ -292,10 +303,13 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">RUN</div>
+            <div class="logo">
+                <img src="logo.png" alt="RUN Logo">
+                <span class="logo-text">RUN</span>
+            </div>
             <ul>
                 <li><a href="#home" onclick="showSection('home')">Inicio</a></li>
-                <li><a href="#features" onclick="showSection('home')">Características</a></li>
+                <li><a href="#features" onclick="showSection('home'); scrollToFeatures()">Características</a></li>
                 <li><a href="#privacy" onclick="showSection('privacy')">Privacidad</a></li>
                 <li><a href="#terms" onclick="showSection('terms')">Términos</a></li>
                 <li><a href="#contact" onclick="showSection('contact')">Contacto</a></li>
@@ -307,9 +321,10 @@
     <div id="home" class="page-section active">
         <section class="hero">
             <div class="container">
+                <img src="logo.png" alt="RUN Logo" style="height: 120px; margin-bottom: 1rem;">
                 <h1>Viaja donde quieras</h1>
                 <p>Siempre a tiempo, siempre seguro</p>
-                <a href="#features" class="btn">Conocer más</a>
+                <a href="#features" onclick="event.preventDefault(); showSection('home'); scrollToFeatures()" class="btn">Conocer más</a>
             </div>
         </section>
 
@@ -330,12 +345,12 @@
                     <div class="feature-card">
                         <div class="feature-icon">📍</div>
                         <h3>Seguimiento en tiempo real</h3>
-                        <p>Sabe dónde está tu conductor en todo momento con nuestra tecnología GPS.</p>
+                        <p>Mantente informado sobre el estado de tu viaje con actualizaciones en tiempo real.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">💰</div>
-                        <h3>Tarifas justas</h3>
-                        <p>Precios transparentes sin sorpresas. Ahorra datos con nuestra app optimizada.</p>
+                        <h3>Servicio gratuito</h3>
+                        <p>Plataforma completamente gratuita. Sin cargos ocultos ni comisiones.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
@@ -362,19 +377,22 @@
                             <li>Recibe notificaciones del estado de tu viaje</li>
                             <li>Conoce la información de tu conductor</li>
                             <li>Viaja seguro con conductores verificados</li>
+                            <li>Servicio 100% gratuito</li>
                         </ul>
                         <a href="#" class="btn">Próximamente en Google Play</a>
                     </div>
                     <div>
-                        <h2>Para conductores</h2>
+                        <h2>Para conductores de la cooperativa</h2>
                         <ul>
-                            <li>Gana dinero con tu mototaxi</li>
+                            <li>Plataforma exclusiva para miembros</li>
                             <li>Recibe solicitudes automáticamente</li>
                             <li>Gestiona tus viajes fácilmente</li>
-                            <li>Trabaja cuando quieras</li>
                             <li>Sistema de ubicación en tiempo real</li>
+                            <li>Sin comisiones ni cargos</li>
                         </ul>
-                        <a href="#" class="btn">Únete como conductor</a>
+                        <p style="margin-top: 1.5rem; color: #7F8C8D; font-size: 0.9rem;">
+                            <strong>Nota:</strong> El acceso para conductores está restringido a miembros activos de la cooperativa.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -401,7 +419,7 @@
                 <p>Utilizamos la información recopilada para:</p>
                 <ul>
                     <li>Conectar pasajeros con conductores disponibles</li>
-                    <li>Proporcionar seguimiento de ubicación en tiempo real durante los viajes</li>
+                    <li>Facilitar la comunicación durante los viajes</li>
                     <li>Enviar notificaciones sobre el estado de tus viajes</li>
                     <li>Mejorar la seguridad y calidad del servicio</li>
                     <li>Proporcionar soporte al cliente</li>
@@ -417,9 +435,10 @@
                     <li><strong>Requerimientos legales:</strong> Si la ley lo requiere o para proteger nuestros derechos.</li>
                 </ul>
 
-                <h2>4. Ubicación y servicios en segundo plano</h2>
-                <p><strong>Para conductores:</strong> La aplicación requiere permiso de ubicación "Permitir siempre" para enviar tu ubicación en tiempo real mientras estás disponible para viajes, incluso cuando la app está en segundo plano o cerrada. Esto permite que los pasajeros te encuentren. Puedes desactivar este servicio en cualquier momento desde la app.</p>
+                <h2>4. Ubicación y servicios</h2>
+                <p><strong>Para conductores:</strong> La aplicación envía tu ubicación GPS en tiempo real mientras la app está abierta o en segundo plano. Cuando cierras completamente la aplicación, se detiene el envío de ubicación. Esto permite que los pasajeros encuentren conductores disponibles cercanos.</p>
                 <p><strong>Para pasajeros:</strong> Solo necesitamos tu ubicación cuando estás solicitando un viaje. No rastreamos tu ubicación cuando no estás usando la app.</p>
+                <p><strong>Importante:</strong> El sistema proporciona un tiempo aproximado de espera, pero no muestra la ubicación exacta del conductor en tiempo real por razones de privacidad y optimización de datos.</p>
 
                 <h2>5. Notificaciones</h2>
                 <p>Enviamos notificaciones para informarte sobre:</p>
@@ -461,7 +480,7 @@
                 <h2>11. Contacto</h2>
                 <p>Para preguntas sobre esta política de privacidad o ejercer tus derechos, contáctanos en:</p>
                 <ul>
-                    <li>Email: contacto@runapp.com</li>
+                    <li>Email: mot.tah.nab@proton.me</li>
                     <li>Ubicación: Tenabo, Campeche, México</li>
                 </ul>
             </div>
@@ -490,11 +509,11 @@
                 </ul>
                 <p><strong>Para conductores:</strong></p>
                 <ul>
+                    <li>Ser miembro activo de la cooperativa de mototaxis</li>
                     <li>Ser mayor de 18 años</li>
                     <li>Poseer licencia de conducir vigente</li>
                     <li>Contar con vehículo en condiciones adecuadas</li>
                     <li>Cumplir con regulaciones locales de transporte</li>
-                    <li>Proporcionar documentación verificable</li>
                 </ul>
 
                 <h2>4. Registro y cuenta de usuario</h2>
@@ -511,15 +530,11 @@
                 <p><strong>Conductores:</strong> Al activar el modo "Disponible", autorizas que la app envíe tu ubicación GPS en tiempo real, incluso en segundo plano, para que pasajeros cercanos puedan solicitarte viajes. Este servicio se desactiva al cambiar tu estado a "Fuera de servicio".</p>
                 <p><strong>Pasajeros:</strong> Tu ubicación se usa solo cuando solicitas un viaje, para conectarte con el conductor más cercano.</p>
 
-                <h2>6. Tarifas y pagos</h2>
-                <ul>
-                    <li>Las tarifas se negocian directamente entre pasajero y conductor</li>
-                    <li>RUN no interviene en el proceso de pago</li>
-                    <li>El uso de la aplicación es gratuito para pasajeros</li>
-                    <li>Los conductores pueden estar sujetos a comisiones en el futuro</li>
-                </ul>
+                <h2>6. Servicio gratuito</h2>
+                <p>RUN es una plataforma completamente gratuita tanto para pasajeros como para conductores. No hay tarifas, comisiones ni cargos ocultos por el uso de la aplicación.</p>
 
-                <h2>7. Conducta del usuario</h2>
+                <h2>7. Viajes</h2>
+                <p>Una vez iniciado el proceso de solicitud de viaje y asignado un conductor, el viaje debe completarse. Por favor, solicita viajes solo cuando estés seguro de necesitar el servicio.</p>
                 <p>Está prohibido:</p>
                 <ul>
                     <li>Usar la app para fines ilegales o no autorizados</li>
@@ -529,13 +544,6 @@
                     <li>Interferir con el funcionamiento de la aplicación</li>
                     <li>Realizar ingeniería inversa o modificar la app</li>
                     <li>Usar la plataforma para spam o actividades comerciales no autorizadas</li>
-                </ul>
-
-                <h2>8. Cancelaciones</h2>
-                <ul>
-                    <li>Pasajeros y conductores pueden cancelar viajes antes de iniciarlos</li>
-                    <li>Cancelaciones excesivas pueden resultar en suspensión temporal</li>
-                    <li>No se aplican penalizaciones por cancelaciones justificadas</li>
                 </ul>
 
                 <h2>9. Responsabilidades y limitaciones</h2>
@@ -579,7 +587,7 @@
                 <h2>15. Contacto</h2>
                 <p>Para preguntas sobre estos términos:</p>
                 <ul>
-                    <li>Email: contacto@runapp.com</li>
+                    <li>Email: mot.tah.nab@proton.me</li>
                     <li>Ubicación: Tenabo, Campeche, México</li>
                 </ul>
 
@@ -601,7 +609,7 @@
                 <h2>Correo electrónico</h2>
                 <p>Para consultas generales, soporte técnico o reportar problemas:</p>
                 <ul>
-                    <li><strong>Email:</strong> contacto@runapp.com</li>
+                    <li><strong>Email:</strong> mot.tah.nab@proton.me</li>
                     <li><strong>Tiempo de respuesta:</strong> 24-48 horas</li>
                 </ul>
 
@@ -614,21 +622,24 @@
                 <p><strong>¿Cómo solicito un viaje?</strong></p>
                 <p>Abre la app, selecciona tu ubicación en el mapa o elige un lugar frecuente, y presiona "Confirmar viaje". El sistema te asignará automáticamente el conductor más cercano.</p>
                 
-                <p><strong>¿Puedo cancelar un viaje?</strong></p>
-                <p>Sí, puedes cancelar antes de que inicie el viaje sin penalización.</p>
+                <p><strong>¿Puedo saber dónde está mi conductor?</strong></p>
+                <p>La app te proporciona un tiempo estimado de espera aproximado. Por razones de privacidad y optimización de datos, no mostramos la ubicación exacta en tiempo real.</p>
                 
                 <p><strong>¿Es seguro?</strong></p>
-                <p>Todos los conductores están verificados. Puedes ver su información antes de abordar.</p>
+                <p>Todos los conductores son miembros verificados de la cooperativa. Puedes ver su información antes de abordar.</p>
+                
+                <p><strong>¿Tiene costo?</strong></p>
+                <p>No, la plataforma es completamente gratuita para pasajeros.</p>
 
                 <h3>Para conductores</h3>
                 <p><strong>¿Cómo me registro como conductor?</strong></p>
-                <p>Descarga la app, regístrate con Google y completa tu perfil con información de tu vehículo. Nuestro equipo verificará tu información.</p>
+                <p>El acceso está restringido únicamente a miembros activos de la cooperativa de mototaxis. Contacta a tu cooperativa para más información.</p>
                 
-                <p><strong>¿Necesito tener la app abierta?</strong></p>
-                <p>Cuando estés disponible, la app funciona en segundo plano. Recibirás notificaciones de nuevos viajes automáticamente.</p>
+                <p><strong>¿La app consume muchos datos?</strong></p>
+                <p>La app está optimizada para consumir la mínima cantidad de datos posible. Solo envía ubicación cuando la app está abierta o en segundo plano.</p>
                 
-                <p><strong>¿Cuánto cuesta?</strong></p>
-                <p>Actualmente el uso de la plataforma es gratuito para conductores.</p>
+                <p><strong>¿Hay comisiones?</strong></p>
+                <p>No, la plataforma es completamente gratuita sin comisiones ni cargos.</p>
 
                 <h2>Reportar un problema</h2>
                 <p>Si experimentas problemas con:</p>
@@ -638,13 +649,13 @@
                     <li>Tu cuenta</li>
                     <li>Seguridad</li>
                 </ul>
-                <p>Envíanos un correo detallado a: <strong>contacto@runapp.com</strong></p>
+                <p>Envíanos un correo detallado a: <strong>mot.tah.nab@proton.me</strong></p>
 
                 <h2>Eliminar cuenta</h2>
-                <p>Si deseas eliminar tu cuenta y datos personales, envía una solicitud a contacto@runapp.com desde tu correo registrado. Tu información será eliminada en 30 días.</p>
+                <p>Si deseas eliminar tu cuenta y datos personales, envía una solicitud a mot.tah.nab@proton.me desde tu correo registrado. Tu información será eliminada en 30 días.</p>
 
                 <h2>Sugerencias</h2>
-                <p>Nos encantaría escuchar tus ideas para mejorar RUN. Envíanos tus sugerencias a contacto@runapp.com</p>
+                <p>Nos encantaría escuchar tus ideas para mejorar RUN. Envíanos tus sugerencias a mot.tah.nab@proton.me</p>
             </div>
         </section>
     </div>
@@ -656,6 +667,9 @@
                     <h3>RUN</h3>
                     <p>Tu servicio de mototaxi en Tenabo, Campeche.</p>
                     <p>Viaja seguro, rápido y confiable.</p>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: #95A5A6;">
+                        Desarrollado por Nordblade Technologies
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h3>Enlaces</h3>
@@ -669,7 +683,7 @@
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <ul>
-                        <li>Email: contacto@runapp.com</li>
+                        <li>Email: mot.tah.nab@proton.me</li>
                         <li>Tenabo, Campeche, México</li>
                     </ul>
                 </div>
@@ -683,7 +697,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Nordblade. Todos los derechos reservados.</p>
+                <p>&copy; 2026 RUN - Nordblade. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -705,6 +719,16 @@
             history.pushState(null, null, '#' + sectionId);
         }
 
+        function scrollToFeatures() {
+            // Wait for section to be visible
+            setTimeout(() => {
+                const featuresSection = document.getElementById('features');
+                if (featuresSection) {
+                    featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
+
         // Handle browser back/forward buttons
         window.addEventListener('popstate', function() {
             const hash = window.location.hash.substring(1) || 'home';
@@ -718,5 +742,4 @@
         });
     </script>
 </body>
-
 </html>
