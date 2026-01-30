@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RUN - Servicio de mototaxi en Tenabo, Campeche. Viaja seguro y a tiempo.">
+    <meta name="keywords" content="mototaxi, transporte, Tenabo, Campeche, RUN">
+    <title>RUN - Tu mototaxi en Tenabo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2C3E50;
+            background-color: #F5F5F5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #007BFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #007BFF;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #F8F9FA;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #007BFF;
+        }
+
+        /* App Section */
+        .app-section {
+            padding: 4rem 0;
+            background: #F8F9FA;
+        }
+
+        .app-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .app-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #007BFF;
+        }
+
+        .app-content ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .app-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .app-content li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #2C3E50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #007BFF;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #BDC3C7;
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495E;
+            color: #BDC3C7;
+        }
+
+        /* Legal Sections */
+        .legal-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .legal-section h1 {
+            color: #007BFF;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .legal-section h2 {
+            color: #007BFF;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-section p, .legal-section ul {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .legal-section ul {
+            padding-left: 2rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            font-style: italic;
+            color: #7F8C8D;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .app-content {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hide sections by default */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">RUN</div>
+            <ul>
+                <li><a href="#home" onclick="showSection('home')">Inicio</a></li>
+                <li><a href="#features" onclick="showSection('home')">Características</a></li>
+                <li><a href="#privacy" onclick="showSection('privacy')">Privacidad</a></li>
+                <li><a href="#terms" onclick="showSection('terms')">Términos</a></li>
+                <li><a href="#contact" onclick="showSection('contact')">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div class="container">
+                <h1>Viaja donde quieras</h1>
+                <p>Siempre a tiempo, siempre seguro</p>
+                <a href="#features" class="btn">Conocer más</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>¿Por qué elegir RUN?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Rápido y confiable</h3>
+                        <p>Conecta con conductores cercanos en segundos. Sistema automático de asignación.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Seguro</h3>
+                        <p>Todos nuestros conductores están verificados. Tu seguridad es nuestra prioridad.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3>Seguimiento en tiempo real</h3>
+                        <p>Sabe dónde está tu conductor en todo momento con nuestra tecnología GPS.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Tarifas justas</h3>
+                        <p>Precios transparentes sin sorpresas. Ahorra datos con nuestra app optimizada.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Fácil de usar</h3>
+                        <p>Interfaz intuitiva diseñada para todos. Solicita tu viaje en 3 pasos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Optimizado</h3>
+                        <p>Bajo consumo de datos y batería. Funciona incluso con conexión lenta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="app-section">
+            <div class="container">
+                <div class="app-content">
+                    <div>
+                        <h2>Para pasajeros</h2>
+                        <ul>
+                            <li>Solicita viajes con un toque</li>
+                            <li>Elige tu punto de encuentro en el mapa</li>
+                            <li>Recibe notificaciones del estado de tu viaje</li>
+                            <li>Conoce la información de tu conductor</li>
+                            <li>Viaja seguro con conductores verificados</li>
+                        </ul>
+                        <a href="#" class="btn">Próximamente en Google Play</a>
+                    </div>
+                    <div>
+                        <h2>Para conductores</h2>
+                        <ul>
+                            <li>Gana dinero con tu mototaxi</li>
+                            <li>Recibe solicitudes automáticamente</li>
+                            <li>Gestiona tus viajes fácilmente</li>
+                            <li>Trabaja cuando quieras</li>
+                            <li>Sistema de ubicación en tiempo real</li>
+                        </ul>
+                        <a href="#" class="btn">Únete como conductor</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PRIVACY POLICY PAGE -->
+    <div id="privacy" class="page-section">
+        <section class="legal-section">
+            <div class="container">
+                <h1>Política de Privacidad</h1>
+                <p class="last-updated">Última actualización: Enero 2026</p>
+
+                <h2>1. Información que recopilamos</h2>
+                <p>En RUN recopilamos la siguiente información para proporcionar nuestros servicios:</p>
+                <ul>
+                    <li><strong>Información de cuenta:</strong> Nombre, correo electrónico, número de teléfono y foto de perfil (si decides proporcionarla a través de Google Sign-In).</li>
+                    <li><strong>Información de ubicación:</strong> Ubicación GPS en tiempo real mientras usas la aplicación para conectarte con conductores cercanos y mostrar tu ruta.</li>
+                    <li><strong>Información del viaje:</strong> Puntos de encuentro, referencias de ubicación, historial de viajes y estado de los mismos.</li>
+                    <li><strong>Información del dispositivo:</strong> Tipo de dispositivo, sistema operativo, identificadores únicos y tokens de notificaciones push.</li>
+                </ul>
+
+                <h2>2. Cómo usamos tu información</h2>
+                <p>Utilizamos la información recopilada para:</p>
+                <ul>
+                    <li>Conectar pasajeros con conductores disponibles</li>
+                    <li>Proporcionar seguimiento de ubicación en tiempo real durante los viajes</li>
+                    <li>Enviar notificaciones sobre el estado de tus viajes</li>
+                    <li>Mejorar la seguridad y calidad del servicio</li>
+                    <li>Proporcionar soporte al cliente</li>
+                    <li>Cumplir con obligaciones legales</li>
+                </ul>
+
+                <h2>3. Compartir información</h2>
+                <p>Tu información personal no se vende a terceros. Solo compartimos información cuando:</p>
+                <ul>
+                    <li><strong>Con conductores:</strong> Compartimos tu ubicación de encuentro y nombre durante un viaje activo.</li>
+                    <li><strong>Con pasajeros:</strong> Los conductores ven tu ubicación de encuentro y referencias proporcionadas.</li>
+                    <li><strong>Proveedores de servicios:</strong> Firebase, Google Cloud y otros servicios que nos ayudan a operar la plataforma.</li>
+                    <li><strong>Requerimientos legales:</strong> Si la ley lo requiere o para proteger nuestros derechos.</li>
+                </ul>
+
+                <h2>4. Ubicación y servicios en segundo plano</h2>
+                <p><strong>Para conductores:</strong> La aplicación requiere permiso de ubicación "Permitir siempre" para enviar tu ubicación en tiempo real mientras estás disponible para viajes, incluso cuando la app está en segundo plano o cerrada. Esto permite que los pasajeros te encuentren. Puedes desactivar este servicio en cualquier momento desde la app.</p>
+                <p><strong>Para pasajeros:</strong> Solo necesitamos tu ubicación cuando estás solicitando un viaje. No rastreamos tu ubicación cuando no estás usando la app.</p>
+
+                <h2>5. Notificaciones</h2>
+                <p>Enviamos notificaciones para informarte sobre:</p>
+                <ul>
+                    <li>Confirmación de conductor asignado</li>
+                    <li>Estado del viaje (conductor en camino, ha llegado, etc.)</li>
+                    <li>Actualizaciones importantes del servicio</li>
+                </ul>
+                <p>Puedes desactivar las notificaciones en la configuración de tu dispositivo.</p>
+
+                <h2>6. Seguridad de datos</h2>
+                <p>Implementamos medidas de seguridad técnicas y organizativas para proteger tu información:</p>
+                <ul>
+                    <li>Encriptación de datos en tránsito y en reposo</li>
+                    <li>Autenticación segura a través de Google Sign-In</li>
+                    <li>Acceso limitado a información personal</li>
+                    <li>Monitoreo constante de actividades sospechosas</li>
+                </ul>
+
+                <h2>7. Retención de datos</h2>
+                <p>Conservamos tu información mientras tu cuenta esté activa. Si eliminas tu cuenta, borraremos tu información personal en un plazo de 30 días, excepto datos que debamos conservar por obligaciones legales.</p>
+
+                <h2>8. Tus derechos</h2>
+                <p>Tienes derecho a:</p>
+                <ul>
+                    <li>Acceder a tu información personal</li>
+                    <li>Corregir datos inexactos</li>
+                    <li>Solicitar la eliminación de tu cuenta y datos</li>
+                    <li>Retirar consentimientos otorgados</li>
+                    <li>Exportar tus datos</li>
+                </ul>
+
+                <h2>9. Menores de edad</h2>
+                <p>Nuestros servicios están dirigidos a mayores de 18 años. No recopilamos intencionalmente información de menores.</p>
+
+                <h2>10. Cambios a esta política</h2>
+                <p>Podemos actualizar esta política ocasionalmente. Te notificaremos sobre cambios importantes a través de la aplicación o por correo electrónico.</p>
+
+                <h2>11. Contacto</h2>
+                <p>Para preguntas sobre esta política de privacidad o ejercer tus derechos, contáctanos en:</p>
+                <ul>
+                    <li>Email: contacto@runapp.com</li>
+                    <li>Ubicación: Tenabo, Campeche, México</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- TERMS OF SERVICE PAGE -->
+    <div id="terms" class="page-section">
+        <section class="legal-section">
+            <div class="container">
+                <h1>Términos y Condiciones de Uso</h1>
+                <p class="last-updated">Última actualización: Enero 2026</p>
+
+                <h2>1. Aceptación de términos</h2>
+                <p>Al descargar, instalar o usar la aplicación RUN, aceptas estos términos y condiciones en su totalidad. Si no estás de acuerdo, no debes usar nuestros servicios.</p>
+
+                <h2>2. Descripción del servicio</h2>
+                <p>RUN es una plataforma tecnológica que conecta pasajeros con conductores de mototaxis independientes en Tenabo, Campeche. RUN no es un servicio de transporte ni emplea conductores; únicamente facilita la conexión entre usuarios.</p>
+
+                <h2>3. Requisitos de elegibilidad</h2>
+                <p><strong>Para pasajeros:</strong></p>
+                <ul>
+                    <li>Ser mayor de 18 años o contar con supervisión de un adulto</li>
+                    <li>Proporcionar información veraz y actualizada</li>
+                    <li>Tener un dispositivo compatible con la aplicación</li>
+                </ul>
+                <p><strong>Para conductores:</strong></p>
+                <ul>
+                    <li>Ser mayor de 18 años</li>
+                    <li>Poseer licencia de conducir vigente</li>
+                    <li>Contar con vehículo en condiciones adecuadas</li>
+                    <li>Cumplir con regulaciones locales de transporte</li>
+                    <li>Proporcionar documentación verificable</li>
+                </ul>
+
+                <h2>4. Registro y cuenta de usuario</h2>
+                <p>Para usar RUN debes:</p>
+                <ul>
+                    <li>Registrarte con una cuenta de Google válida</li>
+                    <li>Proporcionar información precisa y completa</li>
+                    <li>Mantener la confidencialidad de tu cuenta</li>
+                    <li>Notificarnos inmediatamente sobre uso no autorizado</li>
+                    <li>Ser responsable de todas las actividades bajo tu cuenta</li>
+                </ul>
+
+                <h2>5. Uso de la ubicación</h2>
+                <p><strong>Conductores:</strong> Al activar el modo "Disponible", autorizas que la app envíe tu ubicación GPS en tiempo real, incluso en segundo plano, para que pasajeros cercanos puedan solicitarte viajes. Este servicio se desactiva al cambiar tu estado a "Fuera de servicio".</p>
+                <p><strong>Pasajeros:</strong> Tu ubicación se usa solo cuando solicitas un viaje, para conectarte con el conductor más cercano.</p>
+
+                <h2>6. Tarifas y pagos</h2>
+                <ul>
+                    <li>Las tarifas se negocian directamente entre pasajero y conductor</li>
+                    <li>RUN no interviene en el proceso de pago</li>
+                    <li>El uso de la aplicación es gratuito para pasajeros</li>
+                    <li>Los conductores pueden estar sujetos a comisiones en el futuro</li>
+                </ul>
+
+                <h2>7. Conducta del usuario</h2>
+                <p>Está prohibido:</p>
+                <ul>
+                    <li>Usar la app para fines ilegales o no autorizados</li>
+                    <li>Acosar, amenazar o discriminar a otros usuarios</li>
+                    <li>Proporcionar información falsa o engañosa</li>
+                    <li>Intentar acceder a cuentas de otros usuarios</li>
+                    <li>Interferir con el funcionamiento de la aplicación</li>
+                    <li>Realizar ingeniería inversa o modificar la app</li>
+                    <li>Usar la plataforma para spam o actividades comerciales no autorizadas</li>
+                </ul>
+
+                <h2>8. Cancelaciones</h2>
+                <ul>
+                    <li>Pasajeros y conductores pueden cancelar viajes antes de iniciarlos</li>
+                    <li>Cancelaciones excesivas pueden resultar en suspensión temporal</li>
+                    <li>No se aplican penalizaciones por cancelaciones justificadas</li>
+                </ul>
+
+                <h2>9. Responsabilidades y limitaciones</h2>
+                <p><strong>RUN no es responsable de:</strong></p>
+                <ul>
+                    <li>Daños, lesiones o pérdidas durante el viaje</li>
+                    <li>Conducta, seguridad o confiabilidad de conductores o pasajeros</li>
+                    <li>Calidad, condición o legalidad de los servicios de transporte</li>
+                    <li>Disponibilidad continua de conductores</li>
+                    <li>Fallas en dispositivos, conexión a internet o GPS</li>
+                </ul>
+
+                <h2>10. Seguridad</h2>
+                <p>Tu seguridad es importante. Recomendamos:</p>
+                <ul>
+                    <li>Verificar la información del conductor antes de abordar</li>
+                    <li>Compartir tu ubicación con contactos de confianza</li>
+                    <li>Reportar cualquier comportamiento inapropiado</li>
+                    <li>No compartir información personal sensible</li>
+                </ul>
+
+                <h2>11. Suspensión y terminación</h2>
+                <p>RUN puede suspender o terminar tu cuenta si:</p>
+                <ul>
+                    <li>Violas estos términos y condiciones</li>
+                    <li>Proporcionas información falsa</li>
+                    <li>Recibes múltiples reportes negativos</li>
+                    <li>Realizas actividades fraudulentas</li>
+                    <li>Por razones de seguridad o legales</li>
+                </ul>
+
+                <h2>12. Propiedad intelectual</h2>
+                <p>Todo el contenido de RUN (logo, diseño, código, textos) está protegido por derechos de autor. No puedes copiar, modificar o distribuir ningún elemento sin autorización.</p>
+
+                <h2>13. Modificaciones</h2>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios importantes se notificarán a través de la aplicación. El uso continuado después de cambios constituye aceptación.</p>
+
+                <h2>14. Ley aplicable</h2>
+                <p>Estos términos se rigen por las leyes de México. Cualquier disputa se resolverá en los tribunales de Campeche.</p>
+
+                <h2>15. Contacto</h2>
+                <p>Para preguntas sobre estos términos:</p>
+                <ul>
+                    <li>Email: contacto@runapp.com</li>
+                    <li>Ubicación: Tenabo, Campeche, México</li>
+                </ul>
+
+                <h2>16. Disposiciones finales</h2>
+                <p>Si alguna disposición de estos términos se considera inválida, las demás permanecerán en vigor. La falta de ejercicio de algún derecho no constituye renuncia al mismo.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page-section">
+        <section class="legal-section">
+            <div class="container">
+                <h1>Contacto y Soporte</h1>
+                
+                <h2>¿Necesitas ayuda?</h2>
+                <p>Estamos aquí para ayudarte. Elige el método que prefieras:</p>
+
+                <h2>Correo electrónico</h2>
+                <p>Para consultas generales, soporte técnico o reportar problemas:</p>
+                <ul>
+                    <li><strong>Email:</strong> contacto@runapp.com</li>
+                    <li><strong>Tiempo de respuesta:</strong> 24-48 horas</li>
+                </ul>
+
+                <h2>Ubicación</h2>
+                <p>Operamos en Tenabo, Campeche, México</p>
+
+                <h2>Preguntas frecuentes</h2>
+                
+                <h3>Para pasajeros</h3>
+                <p><strong>¿Cómo solicito un viaje?</strong></p>
+                <p>Abre la app, selecciona tu ubicación en el mapa o elige un lugar frecuente, y presiona "Confirmar viaje". El sistema te asignará automáticamente el conductor más cercano.</p>
+                
+                <p><strong>¿Puedo cancelar un viaje?</strong></p>
+                <p>Sí, puedes cancelar antes de que inicie el viaje sin penalización.</p>
+                
+                <p><strong>¿Es seguro?</strong></p>
+                <p>Todos los conductores están verificados. Puedes ver su información antes de abordar.</p>
+
+                <h3>Para conductores</h3>
+                <p><strong>¿Cómo me registro como conductor?</strong></p>
+                <p>Descarga la app, regístrate con Google y completa tu perfil con información de tu vehículo. Nuestro equipo verificará tu información.</p>
+                
+                <p><strong>¿Necesito tener la app abierta?</strong></p>
+                <p>Cuando estés disponible, la app funciona en segundo plano. Recibirás notificaciones de nuevos viajes automáticamente.</p>
+                
+                <p><strong>¿Cuánto cuesta?</strong></p>
+                <p>Actualmente el uso de la plataforma es gratuito para conductores.</p>
+
+                <h2>Reportar un problema</h2>
+                <p>Si experimentas problemas con:</p>
+                <ul>
+                    <li>Viajes o conductores</li>
+                    <li>Funcionamiento de la app</li>
+                    <li>Tu cuenta</li>
+                    <li>Seguridad</li>
+                </ul>
+                <p>Envíanos un correo detallado a: <strong>contacto@runapp.com</strong></p>
+
+                <h2>Eliminar cuenta</h2>
+                <p>Si deseas eliminar tu cuenta y datos personales, envía una solicitud a contacto@runapp.com desde tu correo registrado. Tu información será eliminada en 30 días.</p>
+
+                <h2>Sugerencias</h2>
+                <p>Nos encantaría escuchar tus ideas para mejorar RUN. Envíanos tus sugerencias a contacto@runapp.com</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RUN</h3>
+                    <p>Tu servicio de mototaxi en Tenabo, Campeche.</p>
+                    <p>Viaja seguro, rápido y confiable.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="#home" onclick="showSection('home')">Inicio</a></li>
+                        <li><a href="#privacy" onclick="showSection('privacy')">Política de Privacidad</a></li>
+                        <li><a href="#terms" onclick="showSection('terms')">Términos y Condiciones</a></li>
+                        <li><a href="#contact" onclick="showSection('contact')">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>Email: contacto@runapp.com</li>
+                        <li>Tenabo, Campeche, México</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#privacy" onclick="showSection('privacy')">Privacidad de datos</a></li>
+                        <li><a href="#terms" onclick="showSection('terms')">Términos de servicio</a></li>
+                        <li><a href="#contact" onclick="showSection('contact')">Eliminar cuenta</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RUN. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Update URL hash without triggering scroll
+            history.pushState(null, null, '#' + sectionId);
+        }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function() {
+            const hash = window.location.hash.substring(1) || 'home';
+            showSection(hash);
+        });
+
+        // Handle initial page load with hash
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1) || 'home';
+            showSection(hash);
+        });
+    </script>
+</body>
+</html>
